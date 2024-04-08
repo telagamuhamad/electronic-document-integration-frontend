@@ -1,0 +1,7 @@
+{
+  "name": "electronic-document-integration-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
