@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>home-page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">home-page</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list>
+    <ion-item [routerLink]="['/car-page']" routerLinkActive="router-link-active">
+      <ion-label>Mobil</ion-label>
+    </ion-item>
+    <ion-item [routerLink]="['/travel-page']" routerLinkActive="router-link-active">
+      <ion-label>Pengiriman Barang</ion-label>
+    </ion-item>
+    <ion-item [routerLink]="['/item-page']" routerLinkActive="router-link-active">
+      <ion-label>Data Barang</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

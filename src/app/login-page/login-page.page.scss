@@ -1,0 +1,35 @@
+page-login {
+    ion-content {
+      --background: #DC4C64;
+      .login-form {
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        .input-field {
+            margin-bottom: 20px;
+        }
+
+        ion-button {
+            --border-radius: 8px;
+            --background: #DC4C64;
+        }
+      }
+    }
+  
+    ion-header {
+        ion-title {
+            text-align: center;
+            .login-title {
+                text-align: center;
+                font-size: 24px;
+                margin-bottom: 20px;
+                color: #fff; // Warna teks judul
+            }
+        }
+    }
+  }
+  
