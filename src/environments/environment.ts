@@ -3,7 +3,21 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  // api_url: 'https://pos-api.jollapos.com/api',
+  // site_url: 'https://pos-api.jollapos.com/',
+  api_url: 'http://127.0.0.1:8000/api',
+  site_url: 'http://127.0.0.1:8000/',
+  access_token_identifier: 'AccessToken@JOLLA_POS',
+  ionic_storage: {
+    timezone_key: 'Timezone@IonicStorage',
+    local_server_url_key: 'APIURL@IonicStorage',
+    master_file_last_sync_key: 'MasterFileLastSync@IonicStorage',
+    bluetooth_device_key: 'BluetoothDevice@IonicStorage',
+    printer_type: 'PrinterType@IonicStorage',
+  }
+
 };
 
 /*

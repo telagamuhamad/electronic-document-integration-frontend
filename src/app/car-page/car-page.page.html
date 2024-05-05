@@ -1,43 +1,43 @@
+<!-- car-page.html -->
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>car-page</ion-title>
+    <ion-title>Mobil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">car-page</ion-title>
+      <ion-title size="large">Mobil</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-list>
+  <!-- <ion-list>
     <ion-item>
-      <ion-input label="Masukkan Plat Nomor"></ion-input>
+      <ion-input [(ngModel)]="licensePlate" label="Masukkan Plat Nomor"></ion-input>
+      <ion-button (click)="searchCar()">Cari</ion-button>
     </ion-item>
-  </ion-list>
-  
+  </ion-list> -->
 
-  <ion-card>
+  <ion-card *ngIf="car">
     <ion-item>
       <ion-label position="stacked">License Plate</ion-label>
-      <ion-input type="text" disabled></ion-input>
+      <ion-input type="text" disabled [(ngModel)]="car.license_plate"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Driver 1</ion-label>
-      <ion-input type="text" disabled></ion-input>
+      <ion-input type="text" disabled [(ngModel)]="car.driver_name_1"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Driver 2</ion-label>
-      <ion-input type="text" disabled></ion-input>
+      <ion-input type="text" disabled [(ngModel)]="car.driver_name_2"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-select label="Status" placeholder="Status">
-        <ion-select-option value="Memuat">Memuat</ion-select-option>
+      <ion-select label="Status" placeholder="Status" [(ngModel)]="car.status">
         <ion-select-option value="Berangkat">Berangkat</ion-select-option>
         <ion-select-option value="Terkendala">Terkendala</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-button expand="block">Ubah Status</ion-button>
+    <ion-button expand="block" (click)="updateCarStatus()">Ubah Status</ion-button>
   </ion-card>
 </ion-content>

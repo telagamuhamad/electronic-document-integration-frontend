@@ -1,19 +1,61 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>travel-page</ion-title>
+    <ion-title>Item Detail</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">travel-page</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <ion-list>
     <ion-item>
-      <ion-input label="Nomor Surat Jalan"></ion-input>
+      <ion-input [(ngModel)]="deliveryOrderNumber" placeholder="Nomor Pesanan Pengiriman"></ion-input>
+      <ion-button (click)="getItems()" [disabled]="!deliveryOrderNumber">Cari</ion-button>
     </ion-item>
   </ion-list>
+
+  <ion-card *ngIf="deliveryOrder">
+    <ion-item>
+      <ion-label position="stacked">Pengirim</ion-label>
+      <ion-text>{{ deliveryOrder.sender_name }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Penerima</ion-label>
+      <ion-text>{{ deliveryOrder.receiver_name }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Alamat Penerima</ion-label>
+      <ion-text>{{ deliveryOrder.receiver_address }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Total Berat</ion-label>
+      <ion-text>{{ deliveryOrder.total_weight }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Total Harga</ion-label>
+      <ion-text>{{ deliveryOrder.total_price }}</ion-text>
+    </ion-item>
+  </ion-card>
+
+  <ion-card *ngIf="deliveryOrder && !isPaid">
+    <ion-item>
+      <ion-label position="stacked">Metode Pembayaran</ion-label>
+      <ion-select [(ngModel)]="paymentMethod" placeholder="Pilih Metode Pembayaran">
+        <ion-select-option value="Tunai">Tunai</ion-select-option>
+        <ion-select-option value="Transfer">Transfer</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="paymentMethod == 'Tunai'">
+      <ion-label position="stacked">Jumlah yang Dibayarkan</ion-label>
+      <ion-input type="number" [(ngModel)]="paidAmount" (ionChange)="calculateChange()"></ion-input>
+    </ion-item>    
+    <ion-item *ngIf="paymentMethod == 'Tunai'">
+      <ion-label position="stacked">Kembalian</ion-label>
+      <ion-input type="number" [(ngModel)]="paymentChange"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="paymentMethod !== 'Tunai' && paymentMethod !== ''">
+      <ion-label position="stacked">Gambar Bukti Pembayaran</ion-label>
+      <ion-input type="file" (change)="onFileSelected($event)"></ion-input>
+    </ion-item>
+  </ion-card>
+  <ion-button expand="block" (click)="updateItemStatus()" *ngIf="deliveryOrder && !isReceived">Konfirmasi</ion-button>
+  
 </ion-content>
